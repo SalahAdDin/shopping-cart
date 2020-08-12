@@ -1,0 +1,74 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Banana",
+      "category": "fruits",
+      "price": "12",
+      "stock": "5"
+    },
+    {
+      "id": 2,
+      "name": "Orange",
+      "category": "fruits",
+      "price": "5",
+      "stock": "10"
+    },
+    {
+      "id": 3,
+      "name": "Lettuce",
+      "category": "vegetables",
+      "price": "1",
+      "stock": "20"
+    },
+    {
+      "id": 4,
+      "name": "Potatoes",
+      "category": "vegetables",
+      "price": "1.25",
+      "stock": "50"
+    },
+    {
+      "id": 5,
+      "name": "Mint",
+      "category": "herb",
+      "price": "2",
+      "stock": "20"
+    },
+    {
+      "id": 6,
+      "name": "Parsley",
+      "category": "herb",
+      "price": "0.75",
+      "stock": "10"
+    },
+    {
+      "id": 7,
+      "name": "Barley",
+      "category": "grain",
+      "price": "6",
+      "stock": "20"
+    },
+    {
+      "id": 8,
+      "name": "Rice",
+      "category": "grain",
+      "price": "8",
+      "stock": "30"
+    },
+    {
+      "id": 9,
+      "name": "Wheat",
+      "category": "grain",
+      "price": "7",
+      "stock": "25"
+    },
+    {
+      "id": 10,
+      "name": "Apple",
+      "category": "Fruits",
+      "price": "5",
+      "stock": "20"
+    }
+  ]
+}
