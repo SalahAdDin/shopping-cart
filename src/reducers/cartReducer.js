@@ -32,7 +32,7 @@ export default (state = initialState, action) => {
       }
 
     case types.REMOVE_PRODUCT_FROM_BASKET:
-      products = state.products.filter((product) => product.id !== action.payload)
+      products = state.products.filter((product) => product.id !== action.payload.id)
 
       price = calculatePrice(products)
 

@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import {
   Card,
   CardActions,
@@ -15,8 +15,15 @@ import {
   Grid,
 } from "@material-ui/core"
 import { ShoppingCart, RemoveCircleOutline } from "@material-ui/icons"
+import { removeFromCart } from "src/actions/cartActions"
 
 const Basket = ({ products = [], price = 0 }) => {
+  const dispatch = useDispatch()
+
+  const handleOnClick = (id) => {
+    dispatch(removeFromCart({ id }))
+  }
+
   return (
     <Card elevation={0}>
       <CardHeader title="My basket" action={<ShoppingCart />} />
@@ -30,7 +37,11 @@ const Basket = ({ products = [], price = 0 }) => {
                 secondary={item.amount}
               />
               <ListItemSecondaryAction>
-                <IconButton aria-label="remove" color="secondary">
+                <IconButton
+                  aria-label="remove"
+                  color="secondary"
+                  onClick={() => handleOnClick(item.id)}
+                >
                   <RemoveCircleOutline />
                 </IconButton>
               </ListItemSecondaryAction>

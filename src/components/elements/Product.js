@@ -55,7 +55,7 @@ const Product = ({ id, name, price, stock }) => {
           name="amount"
         />
         <Button
-          disabled={formik.values.amount >= stock || formik.values.amount <= 0}
+          disabled={formik.values.amount > stock || formik.values.amount <= 0}
           variant="contained"
           color="primary"
           type="submit"
