@@ -14,5 +14,5 @@ export const fetchProducts = () => {
 }
 
 export const filterByCategory = (category) => {
-  return (dispatch) => dispatch({ type: types.FILTER_PRODUCTS, payload: category })
+  return { type: types.FILTER_PRODUCTS, payload: category }
 }

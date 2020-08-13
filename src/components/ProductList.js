@@ -12,7 +12,11 @@ const ProductList = () => {
     loadProducts()
   }, [])
 
-  const products = useSelector((state) => state.products.products)
+  const products = useSelector((state) =>
+    state.products.filtered?.length > 0
+      ? state.products.filtered
+      : state.products.products
+  )
 
   return <Products products={products} />
 }
