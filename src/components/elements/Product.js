@@ -21,7 +21,7 @@ const Product = ({ name, price, stock }) => {
           label="Amount(Kg)"
           variant="outlined"
           color="secondary"
-          id="amount"
+          id={"amount_" + name}
           type="number"
           InputLabelProps={{
             shrink: true,
