@@ -31,44 +31,45 @@
     {
       "id": 5,
       "name": "Mint",
-      "category": "herb",
+      "category": "herbs",
       "price": "2",
       "stock": "20"
     },
     {
       "id": 6,
       "name": "Parsley",
-      "category": "herb",
+      "category": "herbs",
       "price": "0.75",
       "stock": "10"
     },
     {
       "id": 7,
       "name": "Barley",
-      "category": "grain",
+      "category": "grains",
       "price": "6",
       "stock": "20"
     },
     {
       "id": 8,
       "name": "Rice",
-      "category": "grain",
+      "category": "grains",
       "price": "8",
       "stock": "30"
     },
     {
       "id": 9,
       "name": "Wheat",
-      "category": "grain",
+      "category": "grains",
       "price": "7",
       "stock": "25"
     },
     {
       "id": 10,
       "name": "Apple",
-      "category": "Fruits",
+      "category": "fruits",
       "price": "5",
       "stock": "20"
     }
-  ]
+  ],
+  "users": { "id": 1, "username": "LuisAlaguna", "password": "Kolombiya2016" }
 }
