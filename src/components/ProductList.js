@@ -12,7 +12,8 @@ const ProductList = () => {
     loadProducts()
   }, [])
 
-  const products = useSelector((state) => state.products)
+  const products = useSelector((state) => state.products.products)
+
   return <Products products={products} />
 }
 

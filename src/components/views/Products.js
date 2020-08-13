@@ -3,10 +3,11 @@ import PropTypes from "prop-types"
 import { useDispatch, useSelector } from "react-redux"
 import { Grid, FormControl, InputLabel, Select, MenuItem } from "@material-ui/core"
 import { filterByCategory } from "../../actions/productsActions"
+import Product from "../elements/Product"
 
 const categories = ["fruits", "grains", "herbs", "vegetables"]
 
-const Products = ({ products = 0 }) => {
+const Products = ({ products = [] }) => {
   const [category, setCategory] = useState("")
   const dispatch = useDispatch()
 
@@ -32,8 +33,16 @@ const Products = ({ products = 0 }) => {
           ))}
         </Select>
       </FormControl>
-      <Grid container justify="space-between">
-        {products.length === 0 && products?.map()}
+      <Grid container justify="space-between" spacing={2}>
+        {products.length !== 0 &&
+          products?.map(
+            (product) =>
+              product.stock > 0 && (
+                <Grid item component="article" xs={6} sm={4} md={3}>
+                  <Product key={"product_" + product.id} {...product} />
+                </Grid>
+              )
+          )}
       </Grid>
     </>
   )
