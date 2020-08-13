@@ -9,3 +9,7 @@ export const removeFromCart = (payload) => ({
   type: types.REMOVE_PRODUCT_FROM_BASKET,
   payload,
 })
+
+export const cancelOrder = () => ({
+  type: types.CANCEL_ORDER,
+})

@@ -13,6 +13,7 @@ export const fetchProducts = () => {
   }
 }
 
-export const filterByCategory = (category) => {
-  return { type: types.FILTER_PRODUCTS, payload: category }
-}
+export const filterByCategory = (category) => ({
+  type: types.FILTER_PRODUCTS,
+  payload: category,
+})

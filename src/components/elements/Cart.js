@@ -2,27 +2,30 @@ import React from "react"
 import PropTypes from "prop-types"
 import { useDispatch, useSelector } from "react-redux"
 import {
+  Button,
   Card,
   CardActions,
   CardContent,
   CardHeader,
-  IconButton,
-  ListItem,
-  List,
-  ListItemSecondaryAction,
-  Typography,
-  ListItemText,
   Grid,
+  IconButton,
+  List,
+  ListItem,
+  ListItemSecondaryAction,
+  ListItemText,
+  Typography,
 } from "@material-ui/core"
 import { ShoppingCart, RemoveCircleOutline } from "@material-ui/icons"
-import { removeFromCart } from "src/actions/cartActions"
+import { removeFromCart, cancelOrder } from "src/actions/cartActions"
 
 const Basket = ({ products = [], price = 0 }) => {
   const dispatch = useDispatch()
 
-  const handleOnClick = (id) => {
+  const handleOnClickRemove = (id) => {
     dispatch(removeFromCart({ id }))
   }
+
+  const handleOnClickCancel = () => dispatch(cancelOrder())
 
   return (
     <Card elevation={0}>
@@ -40,7 +43,7 @@ const Basket = ({ products = [], price = 0 }) => {
                 <IconButton
                   aria-label="remove"
                   color="secondary"
-                  onClick={() => handleOnClick(item.id)}
+                  onClick={() => handleOnClickRemove(item.id)}
                 >
                   <RemoveCircleOutline />
                 </IconButton>
@@ -48,8 +51,7 @@ const Basket = ({ products = [], price = 0 }) => {
             </ListItem>
           ))}
         </List>
-      </CardContent>
-      <CardActions>
+
         <Grid container justify="space-between">
           <Grid item xs={12} sm={8}>
             <Typography component="h5" variant="h5">
@@ -62,6 +64,18 @@ const Basket = ({ products = [], price = 0 }) => {
             </Typography>
           </Grid>
         </Grid>
+      </CardContent>
+      <CardActions>
+        <Button
+          variant="contained"
+          style={{ marginLeft: "auto" }}
+          onClick={handleOnClickCancel}
+        >
+          Cancel
+        </Button>
+        <Button variant="contained" color="primary">
+          Order
+        </Button>
       </CardActions>
     </Card>
   )
