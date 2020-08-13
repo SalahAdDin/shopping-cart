@@ -28,20 +28,23 @@ const Products = ({ products = [] }) => {
           ))}
         </Select>
       </FormControl>
-      <Grid container justify="space-between" spacing={2}>
+      <Grid container spacing={2}>
         {products.length !== 0 &&
-          products?.map((product) => (
-            <Grid
-              item
-              component="article"
-              xs={6}
-              sm={4}
-              md={3}
-              key={"product_" + product.id}
-            >
-              <Product {...product} />
-            </Grid>
-          ))}
+          products?.map(
+            (product) =>
+              product.stock > 0 && (
+                <Grid
+                  item
+                  component="article"
+                  xs={6}
+                  sm={4}
+                  md={3}
+                  key={"product_" + product.id}
+                >
+                  <Product {...product} />
+                </Grid>
+              )
+          )}
       </Grid>
     </>
   )
