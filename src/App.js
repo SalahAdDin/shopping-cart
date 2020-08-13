@@ -1,15 +1,15 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { Container } from "@material-ui/core"
 import { Provider } from "react-redux"
-import Products from "./components/Products"
+import { Container } from "@material-ui/core"
 import store from "./store"
+import ProductList from "./components/ProductList"
 
 const App = (props) => {
   return (
     <Provider store={store}>
       <Container component="section" maxWidth="md">
-        <Products />
+        <ProductList />
       </Container>
     </Provider>
   )
