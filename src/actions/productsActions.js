@@ -17,3 +17,8 @@ export const filterByCategory = (category) => ({
   type: types.FILTER_PRODUCTS,
   payload: category,
 })
+
+export const pullProductsFromStock = (products) => ({
+  type: types.PULL_PRODUCT_AMOUNT_FROM_STOCK,
+  payload: products,
+})

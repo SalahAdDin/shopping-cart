@@ -41,6 +41,7 @@ export default (state = initialState, action) => {
         products,
         price,
       }
+    case types.CONFIRM_ORDER:
     case types.CANCEL_ORDER:
       return { products: [], price: 0 }
     default:

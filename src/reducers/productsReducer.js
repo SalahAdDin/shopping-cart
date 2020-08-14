@@ -22,6 +22,23 @@ export default function (state = initialState, action) {
           (product) => product.category === action.payload
         ),
       }
+    case types.PULL_PRODUCT_AMOUNT_FROM_STOCK:
+      const payload = action.payload
+      const aux = state.products
+      const products = aux.map((product) => {
+        return {
+          ...product,
+          stock: payload.some((item) => item.id === product.id)
+            ? (product.stock -= payload.filter(
+                (item) => item.id === product.id
+              )[0]?.amount)
+            : product.stock,
+        }
+      })
+      return {
+        ...state,
+        products,
+      }
     default:
       return state
   }

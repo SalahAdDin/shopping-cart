@@ -10,6 +10,8 @@ export const removeFromCart = (payload) => ({
   payload,
 })
 
+export const confirmOrder = () => ({ type: types.CONFIRM_ORDER })
+
 export const cancelOrder = () => ({
   type: types.CANCEL_ORDER,
 })

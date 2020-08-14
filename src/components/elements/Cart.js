@@ -16,7 +16,8 @@ import {
   Typography,
 } from "@material-ui/core"
 import { ShoppingCart, RemoveCircleOutline } from "@material-ui/icons"
-import { removeFromCart, cancelOrder } from "src/actions/cartActions"
+import { removeFromCart, cancelOrder, confirmOrder } from "src/actions/cartActions"
+import { pullProductsFromStock } from "src/actions/productsActions"
 
 const Basket = ({ products = [], price = 0 }) => {
   const dispatch = useDispatch()
@@ -26,6 +27,11 @@ const Basket = ({ products = [], price = 0 }) => {
   }
 
   const handleOnClickCancel = () => dispatch(cancelOrder())
+
+  const handleOnClickConfirm = () => {
+    dispatch(pullProductsFromStock(products))
+    dispatch(confirmOrder())
+  }
 
   return (
     <Card elevation={0}>
@@ -42,7 +48,6 @@ const Basket = ({ products = [], price = 0 }) => {
               <ListItemSecondaryAction>
                 <IconButton
                   aria-label="remove"
-                  color="secondary"
                   onClick={() => handleOnClickRemove(item.id)}
                 >
                   <RemoveCircleOutline />
@@ -73,7 +78,12 @@ const Basket = ({ products = [], price = 0 }) => {
         >
           Cancel
         </Button>
-        <Button variant="contained" color="primary">
+        <Button
+          variant="contained"
+          color="primary"
+          disabled={products.length <= 0}
+          onClick={handleOnClickConfirm}
+        >
           Order
         </Button>
       </CardActions>
