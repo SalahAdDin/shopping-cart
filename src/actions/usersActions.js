@@ -1,6 +1,7 @@
-const { types } = require("src/types")
+import { types } from "../types"
+import { api } from "../api"
 
-const loginUser = ({ email, password }) => {
+export const loginUser = ({ email, password }) => {
   return async (dispatch) => {
     dispatch({ type: types.LOGIN_USER, payload: true })
     try {
@@ -18,4 +19,4 @@ const loginUser = ({ email, password }) => {
   }
 }
 
-const logoutUser = () => ({ type: types.LOGOUT_USER })
+export const logoutUser = () => ({ type: types.LOGOUT_USER })

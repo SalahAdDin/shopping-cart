@@ -1,15 +1,16 @@
 import React from "react"
-import PropTypes from "prop-types"
-import { Provider } from "react-redux"
+import { Provider, useSelector } from "react-redux"
 import { Container, Grid } from "@material-ui/core"
 import store from "./store"
-import ProductList from "./components/ProductList"
 import Cart from "./components/elements/Cart"
+import Header from "./components/Header"
+import ProductList from "./components/ProductList"
 
-const App = (props) => {
+const Content = () => {
+  const authenticated = useSelector((state) => state.users.authenticated)
   return (
-    <Provider store={store}>
-      <Container maxWidth="lg">
+    <>
+      {authenticated && (
         <Grid container component="section" spacing={2}>
           <Grid item xs={12} sm={7} md={9}>
             <ProductList />
@@ -18,11 +19,20 @@ const App = (props) => {
             <Cart />
           </Grid>
         </Grid>
+      )}
+    </>
+  )
+}
+
+const App = () => {
+  return (
+    <Provider store={store}>
+      <Container maxWidth="lg">
+        <Header />
+        <Content />
       </Container>
     </Provider>
   )
 }
-
-App.propTypes = {}
 
 export default App
