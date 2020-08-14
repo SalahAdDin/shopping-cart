@@ -3,6 +3,7 @@ import { types } from "../types"
 const initialState = {
   products: [],
   filtered: [],
+  category: null,
   error: false,
   loading: false,
 }
@@ -21,6 +22,7 @@ export default function (state = initialState, action) {
         filtered: state.products.filter(
           (product) => product.category === action.payload
         ),
+        category: action.payload,
       }
     case types.PULL_PRODUCT_AMOUNT_FROM_STOCK:
       const payload = action.payload

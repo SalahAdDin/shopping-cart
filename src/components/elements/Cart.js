@@ -18,7 +18,7 @@ import {
 } from "@material-ui/core"
 import { ShoppingCart, RemoveCircleOutline } from "@material-ui/icons"
 import { removeFromCart, cancelOrder, confirmOrder } from "src/actions/cartActions"
-import { pullProductsFromStock } from "src/actions/productsActions"
+import { pullProductsFromStock, filterByCategory } from "src/actions/productsActions"
 
 const useStyles = makeStyles((theme) => ({
   header: { "& .MuiCardHeader-action": { marginTop: 8, marginRight: 8 } },
@@ -27,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
 const Basket = ({ products = [], price = 0 }) => {
   const classes = useStyles()
   const dispatch = useDispatch()
+  const { category } = useSelector((state) => state.products)
 
   const handleOnClickRemove = (id) => {
     dispatch(removeFromCart({ id }))
@@ -37,6 +38,7 @@ const Basket = ({ products = [], price = 0 }) => {
   const handleOnClickConfirm = () => {
     dispatch(pullProductsFromStock(products))
     dispatch(confirmOrder())
+    dispatch(filterByCategory(category))
   }
 
   return (
