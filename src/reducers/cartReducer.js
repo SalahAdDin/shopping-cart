@@ -21,7 +21,6 @@ export default (state = initialState, action) => {
             : action.payload
         )
       else products = [...products, action.payload]
-      // const item = state.products.findIndex((item) => item.id === action.payload.id)
 
       price = calculatePrice(products)
 
