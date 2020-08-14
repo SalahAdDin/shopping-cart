@@ -18,7 +18,10 @@ const Products = ({ products = [] }) => {
 
   return (
     <>
-      <FormControl variant="outlined">
+      <FormControl
+        variant="outlined"
+        style={{ width: "35%", float: "right", marginBottom: 20 }}
+      >
         <InputLabel>Filter by Category</InputLabel>
         <Select onChange={handleSelectChange}>
           {categories.map((item) => (

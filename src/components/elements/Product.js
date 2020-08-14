@@ -39,7 +39,10 @@ const Product = ({ id, name, price, stock }) => {
           On Stock: {stock}
         </Typography>
       </CardContent>
-      <form onSubmit={formik.handleSubmit}>
+      <form
+        onSubmit={formik.handleSubmit}
+        style={{ margin: 16, textAlign: "center" }}
+      >
         <TextField
           color="secondary"
           InputLabelProps={{
@@ -53,6 +56,7 @@ const Product = ({ id, name, price, stock }) => {
           type="number"
           value={formik.values.amount}
           variant="outlined"
+          style={{ marginBottom: 10 }}
         />
         <Button
           disabled={formik.values.amount > stock || formik.values.amount <= 0}
