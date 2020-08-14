@@ -10,8 +10,15 @@ import {
   DialogContentText,
   DialogTitle,
   TextField,
+  InputAdornment,
+  makeStyles,
 } from "@material-ui/core"
 import { loginUser } from "../../actions/usersActions"
+import { AccountCircle, Lock } from "@material-ui/icons"
+
+const useStyles = makeStyles((theme) => ({
+  field: { textAlign: "center", marginBottom: 30 },
+}))
 
 const validate = (values) => {
   const errors = {}
@@ -25,6 +32,7 @@ const validate = (values) => {
 }
 
 const Login = ({ show, onClose }) => {
+  const classes = useStyles()
   const dispatch = useDispatch()
   const formik = useFormik({
     initialValues: {
@@ -44,26 +52,44 @@ const Login = ({ show, onClose }) => {
       <form onSubmit={formik.handleSubmit}>
         <DialogTitle id="login-form-title">Login</DialogTitle>
         <DialogContent>
-          <DialogContentText>
+          <DialogContentText style={{ marginBottom: 30 }}>
             Haydi buyurun, buyurun, cok taze bulursun, buyurun!
           </DialogContentText>
-          <TextField
-            autoFocus
-            name="email"
-            label="Email Address"
-            onBlur={formik.handleBlur}
-            onChange={formik.handleChange}
-            type="email"
-            value={formik.values.email}
-          />
-          <TextField
-            name="password"
-            label="Password"
-            onBlur={formik.handleBlur}
-            onChange={formik.handleChange}
-            type="password"
-            value={formik.values.password}
-          />
+          <div className={classes.field}>
+            <TextField
+              autoFocus
+              name="email"
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <AccountCircle />
+                  </InputAdornment>
+                ),
+              }}
+              label="Email Address"
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              type="email"
+              value={formik.values.email}
+            />
+          </div>
+          <div className={classes.field}>
+            <TextField
+              name="password"
+              label="Password"
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <Lock />
+                  </InputAdornment>
+                ),
+              }}
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              type="password"
+              value={formik.values.password}
+            />
+          </div>
         </DialogContent>
         <DialogActions>
           <Button onClick={onClose}>Cancel</Button>

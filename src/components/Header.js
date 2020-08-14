@@ -50,7 +50,7 @@ const Header = () => {
           )}
           {authenticated && (
             <>
-              <Typography component="h4" variant="h4">
+              <Typography component="h6" variant="h6">
                 {user.username}
               </Typography>
               <IconButton
@@ -61,7 +61,9 @@ const Header = () => {
               >
                 <AccountCircle />
               </IconButton>
-              <Button onClick={handleOnClickLogout}>Logout</Button>
+              <Button onClick={handleOnClickLogout} color="inherit">
+                Logout
+              </Button>
             </>
           )}
         </Toolbar>
