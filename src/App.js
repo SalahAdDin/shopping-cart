@@ -1,10 +1,11 @@
-import React from "react"
-import { Provider, useSelector } from "react-redux"
+import React, { useEffect } from "react"
+import { Provider, useDispatch, useSelector } from "react-redux"
 import { Container, Grid, Typography, makeStyles } from "@material-ui/core"
 import store from "./store"
 import Cart from "./components/elements/Cart"
 import Header from "./components/Header"
 import ProductList from "./components/ProductList"
+import { loginUser } from "./actions/usersActions"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -12,13 +13,28 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(2),
   },
   landing: {
+    width: "auto",
     margin: theme.spacing(4),
   },
 }))
 
+const getCurrentUser = () => {
+  return JSON.parse(localStorage.getItem("user"))
+}
+
 const Content = () => {
   const classes = useStyles()
-  const authenticated = useSelector((state) => state.users.authenticated)
+  const dispatch = useDispatch()
+  const { authenticated } = useSelector((state) => state.users)
+  const currentUser = getCurrentUser()
+
+  useEffect(() => {
+    if (currentUser) {
+      const { email, id } = currentUser
+      dispatch(loginUser({ email, id }))
+    }
+  }, [])
+
   return (
     <>
       {authenticated ? (
