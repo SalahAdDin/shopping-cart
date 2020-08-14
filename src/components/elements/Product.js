@@ -20,9 +20,9 @@ const Product = ({ id, name, price, stock }) => {
       amount: 0,
     },
     validate,
-    onSubmit: ({ amount }) => {
-      // const amount = Number(values.amount)
+    onSubmit: ({ amount }, { resetForm }) => {
       dispatch(addToCart({ id, name, price, amount }))
+      resetForm()
     },
   })
 
@@ -46,13 +46,13 @@ const Product = ({ id, name, price, stock }) => {
             shrink: true,
           }}
           label="Amount(Kg)"
+          name="amount"
           onBlur={formik.handleBlur}
           onChange={formik.handleChange}
           size="small"
           type="number"
           value={formik.values.amount}
           variant="outlined"
-          name="amount"
         />
         <Button
           disabled={formik.values.amount > stock || formik.values.amount <= 0}
