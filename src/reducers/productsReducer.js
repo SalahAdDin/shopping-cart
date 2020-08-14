@@ -29,9 +29,9 @@ export default function (state = initialState, action) {
         return {
           ...product,
           stock: payload.some((item) => item.id === product.id)
-            ? (product.stock -= payload.filter(
+            ? (product.stock -= payload.find(
                 (item) => item.id === product.id
-              )[0]?.amount)
+              )?.amount)
             : product.stock,
         }
       })
