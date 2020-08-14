@@ -71,5 +71,12 @@
       "stock": 20
     }
   ],
-  "users": { "id": 1, "username": "LuisAlaguna", "password": "Kolombiya2016" }
+  "users": [
+    {
+      "id": 1,
+      "email": "alagunasalahaddin@live.com",
+      "password": "Kolombiya2016",
+      "username": "Luis Alaguna"
+    }
+  ]
 }
